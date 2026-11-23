@@ -17,6 +17,9 @@ LINE = (
 
 
 def main():
+    # The gate allows 1-200 characters; refuse to write anything else.
+    if not 1 <= len(LINE) <= 200 or LINE != LINE.strip():
+        raise ValueError("entry line must be a single line of 1-200 characters")
     out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
     os.makedirs(out_dir, exist_ok=True)
     path = os.path.join(out_dir, "entry.txt")
